@@ -4,8 +4,8 @@ let total_cookie = 0
 let cookie_per_s = 0
 
 let shop = [
-    {title: "ring_bell", price: 10, cps: 1, image_url: "assset/bell.png", total: 0},
-    {title: "sonic_boom", price: 20, cps: 3, image_url: "assset/sonic_boom.png", total: 0},
+    {id: "ring_bell", title: "ring_bell", price: 10, cps: 1, image_url: "assset/bell.png", total: 0},
+    {id: "sonic_boom", title: "sonic_boom", price: 20, cps: 3, image_url: "assset/sonic_boom.png", total: 0},
 
 ]
 
@@ -17,12 +17,18 @@ const shop_tag = document.getElementById("shop-container")
 
 //! Function
 
+function handleShopClick (item) {
+    let index = shop.findIndex(o => o.id == item.id)
+    shop[index].total += 1
+    refreshShop()
+}
 function refreshShop (){
 
+    shop_tag.innerHTML = null
 
     shop.forEach((item)=>{
         let newDomElement = document.createElement("div")
-        newDomElement.classList = ["bg-white rounded p3 flex justify-between"]
+        newDomElement.classList = ["bg-white rounded p-3 flex justify-between cursor-pointer hover:bg-blue-200 transition-all duration-300"]
 
         let leftPart = document.createElement("div")
         leftPart.classList =["flex item-center gap-3"]
@@ -43,6 +49,9 @@ function refreshShop (){
         leftPart.appendChild(itemName)
 
         shop_tag.appendChild(newDomElement)
+
+        //! add event listener
+        newDomElement.addEventListener("click", () => {handleShopClick(item)})
 
     })
 
