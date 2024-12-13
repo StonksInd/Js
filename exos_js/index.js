@@ -34,7 +34,7 @@ function random_dices(nbr_draw){
     }
 
 }
-random_dices(1000000000000)
+//random_dices(1000000000000)
 
 
 function rabbit_turtle(nbr_draw){
@@ -46,16 +46,17 @@ function rabbit_turtle(nbr_draw){
         let a = Math.floor(Math.random() * 6) + 1;
         if(a==6){
 
-            console.log("le lapin a gagné");
+            //console.log("le lapin a gagné");
             rabbit_win +=1;
             c++;
             a=0;
+            turtle = 0;
         }
         else{
             turtle += 1;
             a=0;
             if(turtle == 6){
-                console.log("la tortue à gagné");
+                //console.log("la tortue à gagné");
                 turtle_win +=1;
                 c++;
                 turtle = 0;
@@ -65,7 +66,7 @@ function rabbit_turtle(nbr_draw){
         i=0;
         
         
-        if(c==10000){
+        if(c==10000000){
             console.log("le lapin gagne dans", (rabbit_win/c).toFixed(4));
             console.log("la tortue   gagne dans", (turtle_win/c).toFixed(4));
             break
@@ -75,7 +76,7 @@ function rabbit_turtle(nbr_draw){
     };
 
 }
-//rabbit_turtle(100000000000000000000)
+rabbit_turtle(100000000000000000000)
 
 
 
