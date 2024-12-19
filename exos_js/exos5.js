@@ -22,33 +22,40 @@ function removeLaps() {
 }
 
 function startTime() {
-    const start = Date.now();
-    startButton.setAttribute('disabled', 'disabled');
-    refresh_interval = setInterval(() => test(start), 50);
+    if (typeof (un) == undefined) {
+        start = Date.now();
+    } else {
 
+        startButton.setAttribute('disabled', 'disabled');
+        refresh_interval = setInterval(() => test(start), 50);
 
+    }
 }
 
 function end_time() {
-
+    un = start;
+    deux = new_start;
     startButton.removeAttribute('disabled');
+    clearInterval(refresh_interval);
+    refresh_interval = null;
 
 }
 
 
 function test(start) {
+    if (typeof (un) == undefined) {
+        new_start = Date.now();
+    } else {
 
-    let new_start = Date.now();
-    let time = document.getElementById('timer');
-    if (time.parentElement.lastChild) {
-        time.parentElement.lastChild.remove();
+        let time = document.getElementById('timer');
+        if (time.parentElement.lastChild) {
+            time.parentElement.lastChild.remove();
+        }
+
+        let new_time = document.createElement("p");
+        new_time.textContent = (new_start - start) + " ms";
+        time.parentElement.appendChild(new_time);
+        console.log(new_start - start)
+
     }
-
-    let new_time = document.createElement("p");
-    new_time.textContent = (new_start - start) + " ms";
-    time.parentElement.appendChild(new_time);
-    console.log(new_start - start)
-
-
-
 }
