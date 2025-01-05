@@ -17,7 +17,7 @@ function random_dices(nbr_draw){
     let c= 0
     let d=0
     for(let i=0; i<nbr_draw;i++){ 
-        let a = Math.floor(Math.random() * 6) + 1
+            
         if(b.includes(a)==false){
             b.push(a)
             if (b.length == 6){
